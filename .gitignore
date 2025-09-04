@@ -1,5 +1,8 @@
 data/
 *.zip
 *.tar.gz
+Identifier
+desktop.ini
+Thumbs.db
 models/
 data.zip
