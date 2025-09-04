@@ -9,6 +9,15 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.optimizers import Adam
 import datetime
+import time
+
+# Hàm tạo timestamp cho tên file và thư mục
+def get_timestamp():
+    """Tạo timestamp dạng YYYYMMDD_HHMMSS để sử dụng trong tên file và thư mục"""
+    return datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+# Timestamp cho phiên huấn luyện hiện tại
+TIMESTAMP = get_timestamp()
 
 # Đường dẫn
 DATA_DIR = Path("data/augmented")  # Sử dụng dữ liệu đã tăng cường
@@ -16,9 +25,15 @@ MODELS_DIR = Path("models")
 RESULTS_DIR = Path("results")
 CLASSES = ["Brown_Spot", "Leaf_Blast", "Leaf_Blight", "Healthy"]
 
+# Tạo thư mục lưu mô hình và kết quả với timestamp
+MODEL_RUN_DIR = MODELS_DIR / f"run_{TIMESTAMP}"
+RESULT_RUN_DIR = RESULTS_DIR / f"run_{TIMESTAMP}"
+
 # Tạo thư mục lưu mô hình và kết quả
 MODELS_DIR.mkdir(exist_ok=True)
 RESULTS_DIR.mkdir(exist_ok=True)
+MODEL_RUN_DIR.mkdir(exist_ok=True)
+RESULT_RUN_DIR.mkdir(exist_ok=True)
 
 # Các tham số
 IMG_SIZE = (224, 224)
@@ -110,9 +125,13 @@ def create_baseline_model():
 
 def train_model(model, train_generator, val_generator):
     """Huấn luyện mô hình"""
+    # Tạo tên file với timestamp
+    best_model_path = MODEL_RUN_DIR / f'baseline_best_{TIMESTAMP}.h5'
+    final_model_path = MODEL_RUN_DIR / f'baseline_final_{TIMESTAMP}.h5'
+    
     # Thiết lập callbacks
     checkpoint = ModelCheckpoint(
-        MODELS_DIR / 'baseline_best.h5',
+        best_model_path,
         monitor='val_accuracy',
         save_best_only=True,
         mode='max',
@@ -134,12 +153,17 @@ def train_model(model, train_generator, val_generator):
         verbose=1
     )
     
-    # Tạo TensorBoard callback
-    log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    # Tạo TensorBoard callback với timestamp
+    log_dir = Path("logs") / "fit" / f"run_{TIMESTAMP}"
+    log_dir.mkdir(parents=True, exist_ok=True)
     tensorboard_callback = tf.keras.callbacks.TensorBoard(
         log_dir=log_dir, 
         histogram_freq=1
     )
+    
+    print(f"Logs sẽ được lưu tại: {log_dir}")
+    print(f"Model tốt nhất sẽ được lưu tại: {best_model_path}")
+    print(f"Model cuối cùng sẽ được lưu tại: {final_model_path}")
     
     # Huấn luyện mô hình
     history = model.fit(
@@ -152,7 +176,7 @@ def train_model(model, train_generator, val_generator):
     )
     
     # Lưu mô hình cuối cùng
-    model.save(MODELS_DIR / 'baseline_final.h5')
+    model.save(final_model_path)
     
     return history
 
@@ -168,10 +192,15 @@ def evaluate_model(model, test_generator):
     y_pred = np.argmax(predictions, axis=1)
     y_true = test_generator.classes
     
+    # Tạo tên file kết quả với timestamp
+    results_file = RESULT_RUN_DIR / f'baseline_results_{TIMESTAMP}.txt'
+    
     # Lưu kết quả dự đoán
-    with open(RESULTS_DIR / 'baseline_results.txt', 'w') as f:
+    with open(results_file, 'w') as f:
         f.write(f"Test Loss: {test_loss:.4f}\n")
         f.write(f"Test Accuracy: {test_accuracy:.4f}\n")
+    
+    print(f"Kết quả đánh giá đã được lưu tại: {results_file}")
     
     return y_true, y_pred
 
@@ -197,9 +226,14 @@ def plot_training_history(history):
     plt.ylabel('Loss')
     plt.legend()
     
+    # Tạo tên file biểu đồ với timestamp
+    history_plot_path = RESULT_RUN_DIR / f'baseline_training_history_{TIMESTAMP}.png'
+    
     plt.tight_layout()
-    plt.savefig(RESULTS_DIR / 'baseline_training_history.png')
+    plt.savefig(history_plot_path)
     plt.close()
+    
+    print(f"Biểu đồ lịch sử huấn luyện đã được lưu tại: {history_plot_path}")
 
 def plot_confusion_matrix(y_true, y_pred):
     """Vẽ ma trận nhầm lẫn"""
@@ -209,6 +243,9 @@ def plot_confusion_matrix(y_true, y_pred):
     # Tính ma trận nhầm lẫn
     cm = confusion_matrix(y_true, y_pred)
     
+    cm_path = RESULT_RUN_DIR / f'baseline_confusion_matrix_{TIMESTAMP}.png'
+    report_path = RESULT_RUN_DIR / f'baseline_classification_report_{TIMESTAMP}.txt'
+    
     # Vẽ ma trận nhầm lẫn
     plt.figure(figsize=(10, 8))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=CLASSES, yticklabels=CLASSES)
@@ -216,20 +253,25 @@ def plot_confusion_matrix(y_true, y_pred):
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
     plt.tight_layout()
-    plt.savefig(RESULTS_DIR / 'baseline_confusion_matrix.png')
+    plt.savefig(cm_path)
     plt.close()
     
-    # Tạo báo cáo phân loại
     report = classification_report(y_true, y_pred, target_names=CLASSES)
     print("Classification Report:")
     print(report)
     
     # Lưu báo cáo phân loại
-    with open(RESULTS_DIR / 'baseline_classification_report.txt', 'w') as f:
+    with open(report_path, 'w') as f:
         f.write(report)
+    
+    print(f"Ma trận nhầm lẫn đã được lưu tại: {cm_path}")
+    print(f"Báo cáo phân loại đã được lưu tại: {report_path}")
 
 def main():
     print("===== HUẤN LUYỆN MÔ HÌNH CNN CƠ BẢN =====")
+    print(f"Timestamp hiện tại: {TIMESTAMP}")
+    print(f"Thư mục lưu mô hình: {MODEL_RUN_DIR}")
+    print(f"Thư mục lưu kết quả: {RESULT_RUN_DIR}")
     
     # Tạo data generators
     train_generator, val_generator, test_generator = create_data_generators()
@@ -252,7 +294,8 @@ def main():
     plot_confusion_matrix(y_true, y_pred)
     
     print("\nĐã hoàn thành huấn luyện và đánh giá mô hình CNN cơ bản!")
-    print(f"Kết quả được lưu trong thư mục: {RESULTS_DIR}")
+    print(f"Kết quả được lưu trong thư mục: {RESULT_RUN_DIR}")
+    print(f"Mô hình được lưu trong thư mục: {MODEL_RUN_DIR}")
 
 if __name__ == "__main__":
     main()
