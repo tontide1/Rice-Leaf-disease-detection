@@ -12,7 +12,7 @@ from tensorflow.keras.optimizers import Adam
 import datetime
 
 # Đường dẫn
-DATA_DIR = Path("data/augmented")  # Sử dụng dữ liệu đã tăng cường
+DATA_DIR = Path("data/processed")  # Sử dụng dữ liệu đã chuẩn hóa (không tăng cường)
 MODELS_DIR = Path("models")
 RESULTS_DIR = Path("results")
 CLASSES = ["Brown_Spot", "Leaf_Blast", "Leaf_Blight", "Healthy"]
@@ -29,19 +29,8 @@ NUM_CLASSES = len(CLASSES)
 
 def create_data_generators():
     """Tạo data generators cho việc huấn luyện"""
-    # Tăng cường dữ liệu cho tập train
-    train_datagen = ImageDataGenerator(
-        rescale=1./255,
-        rotation_range=20,
-        width_shift_range=0.2,
-        height_shift_range=0.2,
-        shear_range=0.2,
-        zoom_range=0.2,
-        horizontal_flip=True,
-        fill_mode='nearest'
-    )
-    
-    # Chỉ rescale cho tập validation và test
+    # Chỉ rescale dữ liệu, không thực hiện tăng cường dữ liệu
+    train_datagen = ImageDataGenerator(rescale=1./255)
     val_datagen = ImageDataGenerator(rescale=1./255)
     test_datagen = ImageDataGenerator(rescale=1./255)
     
@@ -102,7 +91,7 @@ def create_mobilenet_model():
         metrics=['accuracy']
     )
     
-    return model, 'mobilenet'
+    return model, 'mobilenet_processed'
 
 def create_resnet_model():
     """Tạo mô hình sử dụng ResNet50V2"""
@@ -134,7 +123,7 @@ def create_resnet_model():
         metrics=['accuracy']
     )
     
-    return model, 'resnet'
+    return model, 'resnet_processed'
 
 def create_efficientnet_model():
     """Tạo mô hình sử dụng EfficientNetB0"""
@@ -166,7 +155,7 @@ def create_efficientnet_model():
         metrics=['accuracy']
     )
     
-    return model, 'efficientnet'
+    return model, 'efficientnet_processed'
 
 def fine_tune_model(model, model_name, train_generator, val_generator):
     """Fine-tune mô hình"""
@@ -181,17 +170,17 @@ def fine_tune_model(model, model_name, train_generator, val_generator):
     )
     
     # Mở khóa một số lớp cuối của mô hình cơ sở để fine-tune
-    if model_name == 'mobilenet':
+    if 'mobilenet' in model_name:
         for layer in model.layers[:100]:
             layer.trainable = False
         for layer in model.layers[100:]:
             layer.trainable = True
-    elif model_name == 'resnet':
+    elif 'resnet' in model_name:
         for layer in model.layers[:150]:
             layer.trainable = False
         for layer in model.layers[150:]:
             layer.trainable = True
-    elif model_name == 'efficientnet':
+    elif 'efficientnet' in model_name:
         for layer in model.layers[:200]:
             layer.trainable = False
         for layer in model.layers[200:]:
@@ -327,7 +316,7 @@ def plot_confusion_matrix(y_true, y_pred, model_name):
         f.write(report)
 
 def main():
-    print("===== HUẤN LUYỆN MÔ HÌNH TRANSFER LEARNING =====")
+    print("===== HUẤN LUYỆN MÔ HÌNH TRANSFER LEARNING VỚI DỮ LIỆU ĐÃ CHUẨN HÓA =====")
     
     # Tạo data generators
     train_generator, val_generator, test_generator = create_data_generators()
@@ -363,11 +352,8 @@ def main():
         
         print(f"\nĐã hoàn thành huấn luyện và đánh giá mô hình {model_name.upper()}!")
     
-    print("\nĐã hoàn thành huấn luyện tất cả các mô hình transfer learning!")
+    print("\nĐã hoàn thành huấn luyện tất cả các mô hình transfer learning với dữ liệu đã chuẩn hóa!")
     print(f"Kết quả được lưu trong thư mục: {RESULTS_DIR}")
 
 if __name__ == "__main__":
     main()
-
-
-

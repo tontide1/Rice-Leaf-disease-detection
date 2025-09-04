@@ -1,0 +1,10 @@
+              precision    recall  f1-score   support
+
+  Brown_Spot       0.88      0.82      0.85       198
+  Leaf_Blast       1.00      1.00      1.00       194
+ Leaf_Blight       0.67      0.90      0.77       193
+     Healthy       0.83      0.60      0.70       189
+
+    accuracy                           0.83       774
+   macro avg       0.84      0.83      0.83       774
+weighted avg       0.84      0.83      0.83       774
