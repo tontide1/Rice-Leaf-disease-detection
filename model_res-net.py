@@ -16,23 +16,30 @@ import datetime
 DATA_DIR = Path("data/processed")
 MODELS_DIR = Path("models")
 RESULTS_DIR = Path("results")
-LOGS_DIR = Path("logs")
 CLASSES = ["Brown_Spot", "Leaf_Blast", "Leaf_Blight", "Healthy"]
 
 # Tạo thư mục lưu mô hình và kết quả
 MODELS_DIR.mkdir(exist_ok=True)
 RESULTS_DIR.mkdir(exist_ok=True)
-LOGS_DIR.mkdir(exist_ok=True)
 
 # Các tham số
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
-EPOCHS = 30
+EPOCHS = 25
 NUM_CLASSES = len(CLASSES)
 
 def create_data_generators():
     """Tạo data generators cho việc huấn luyện (dùng preprocess của ResNet)."""
-    train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+    train_datagen = ImageDataGenerator(
+        preprocessing_function=preprocess_input,
+        rotation_range=20,
+        width_shift_range=0.2,
+        height_shift_range=0.2,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True,
+        fill_mode='nearest'
+    )
     val_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
     test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
@@ -76,15 +83,15 @@ def create_resnet_model(trainable_backbone: bool = False):
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
-    x = Dropout(0.5)(x)
-    x = Dense(512, activation='relu')(x)
-    x = Dropout(0.5)(x)
+    x = Dropout(0.4)(x)
+    x = Dense(256, activation='relu')(x)
+    x = Dropout(0.4)(x)
     outputs = Dense(NUM_CLASSES, activation='softmax')(x)
 
     model = Model(inputs=base_model.input, outputs=outputs)
 
     model.compile(
-        optimizer=Adam(learning_rate=1e-4),
+        optimizer=Adam(learning_rate=3e-5 if trainable_backbone else 1e-4),
         loss='categorical_crossentropy',
         metrics=['accuracy']
     )
@@ -108,7 +115,7 @@ def train_model(model, train_generator, val_generator):
 
     early_stopping = EarlyStopping(
         monitor='val_loss',
-        patience=8,
+        patience=5,
         restore_best_weights=True,
         verbose=1
     )
@@ -116,15 +123,12 @@ def train_model(model, train_generator, val_generator):
     reduce_lr = ReduceLROnPlateau(
         monitor='val_loss',
         factor=0.2,
-        patience=4,
+        patience=3,
         min_lr=1e-6,
         verbose=1
     )
 
-    log_dir = LOGS_DIR / 'fit' / 'resnet_processed' / datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
-    ensure_directory(LOGS_DIR)
-    ensure_directory(LOGS_DIR / 'fit')
-    ensure_directory(log_dir.parent)
+    log_dir = os.path.abspath("logs/fit/resnet_processed/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     tensorboard_callback = tf.keras.callbacks.TensorBoard(
         log_dir=str(log_dir),
         histogram_freq=1
