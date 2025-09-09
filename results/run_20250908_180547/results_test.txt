@@ -1,0 +1,5 @@
+Run timestamp: 20250908_180547
+Results for: test set
+Loss: 0.4318
+Compile_metrics: 0.9395
+Total parameters: 306,340

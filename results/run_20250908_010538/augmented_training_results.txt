@@ -1,0 +1,6 @@
+Run timestamp: 20250908_010538
+Test Loss: 1.4285
+Test Accuracy: 0.7122
+Total parameters: 895,140
+Training data: Augmented
+Validation/Test data: Processed

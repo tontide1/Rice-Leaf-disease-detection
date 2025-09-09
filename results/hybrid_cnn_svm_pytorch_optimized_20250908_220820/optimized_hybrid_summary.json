@@ -1,0 +1,40 @@
+{
+  "timestamp": "20250908_220820",
+  "model": "Optimized Hybrid CNN+SVM PyTorch",
+  "device": "cuda",
+  "parameters": {
+    "batch_size": 64,
+    "learning_rate": 0.002,
+    "weight_decay": 2e-05,
+    "feature_dim": 512,
+    "grad_accumulation_steps": 2,
+    "cnn_epochs": 30,
+    "mixed_precision": true
+  },
+  "cnn_model": {
+    "total_parameters": 1437924,
+    "trainable_parameters": 1437924,
+    "best_val_accuracy": 0.918858421936206
+  },
+  "svm_model": {
+    "best_parameters": {
+      "C": 10,
+      "gamma": "scale",
+      "kernel": "rbf"
+    }
+  },
+  "performance": {
+    "train_accuracy": 0.9281005859375,
+    "val_accuracy": 0.9440402909904868,
+    "test_accuracy": 0.9412094064949608,
+    "test_inference_time": 2.795929193496704,
+    "test_inference_time_per_sample": 1.5654698731784458,
+    "total_execution_time": 1755.1384999752045
+  },
+  "classes": [
+    "bacterial_leaf_blight",
+    "blast",
+    "brown_spot",
+    "normal"
+  ]
+}

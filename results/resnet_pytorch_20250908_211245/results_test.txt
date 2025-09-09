@@ -1,0 +1,4 @@
+ResNet50 PyTorch Transfer Learning + Fine-tuning
+Run timestamp: 20250908_211245
+Results for: test set
+Accuracy: 0.9978

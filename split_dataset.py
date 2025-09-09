@@ -6,8 +6,8 @@ import imagehash
 
 SRC = Path("data/Rice_Leaf_Disease_Images")
 DST = Path("data/splits")
-CLASSES = ["Brown_Spot","Leaf_Blast","Leaf_Blight","Healthy"]
-SPLITS = {"train":0.70, "val":0.15, "test":0.15}
+CLASSES = ["brown_spot","blast","bacterial_leaf_blight","normal"]
+SPLITS = {"train":0.7, "val":0.15, "test":0.15}
 EXTS = {".jpg",".jpeg",".png"}
 SEED=42; random.seed(SEED)
 
