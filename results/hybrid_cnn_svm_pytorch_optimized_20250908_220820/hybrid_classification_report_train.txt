@@ -1,0 +1,16 @@
+Optimized Hybrid CNN+SVM PyTorch Model
+Set: train
+Accuracy: 0.9281
+Inference time: 12.0012s for 8192 samples
+Average inference time: 1.46ms per sample
+
+                       precision    recall  f1-score   support
+
+bacterial_leaf_blight       0.97      0.98      0.98      2369
+                blast       0.88      0.87      0.88      1866
+           brown_spot       0.92      0.90      0.91      2103
+               normal       0.93      0.95      0.94      1854
+
+             accuracy                           0.93      8192
+            macro avg       0.92      0.93      0.93      8192
+         weighted avg       0.93      0.93      0.93      8192

@@ -1,0 +1,5 @@
+Run timestamp: 20250908_213409
+Results for: train set
+Loss: 0.5192
+Compile_metrics: 0.9278
+Total parameters: 306,340

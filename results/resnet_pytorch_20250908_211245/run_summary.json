@@ -1,0 +1,18 @@
+{
+  "timestamp": "20250908_211245",
+  "model": "ResNet50 PyTorch Transfer Learning + Fine-tuning",
+  "device": "cuda",
+  "epochs_transfer": 15,
+  "epochs_finetune": 25,
+  "best_acc_transfer": 0.8942361499720202,
+  "best_acc_finetune": 0.9938444320089537,
+  "final_train_accuracy": 0.995275018173007,
+  "final_val_accuracy": 0.9938444320089536,
+  "final_test_accuracy": 0.9977603583426652,
+  "classes": [
+    "bacterial_leaf_blight",
+    "blast",
+    "brown_spot",
+    "normal"
+  ]
+}

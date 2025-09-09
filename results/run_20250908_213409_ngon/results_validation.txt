@@ -1,0 +1,5 @@
+Run timestamp: 20250908_213409
+Results for: validation set
+Loss: 0.5495
+Compile_metrics: 0.9289
+Total parameters: 306,340
