@@ -1,0 +1,11 @@
+Đường dẫn ảnh: data/test_data_deeplearning/DoMinhHuy/blast/leaf_blast5.jpg
+Kết quả dự đoán: Blast
+Lớp dự đoán: blast
+Độ tin cậy: 0.7878 (78.78%)
+Thời gian inference: 0.2985 giây
+
+Xác suất cho tất cả các lớp:
+Bacterial Leaf Blight: 0.0193 (1.93%)
+Blast: 0.7878 (78.78%)
+Brown Spot: 0.1633 (16.33%)
+Healthy: 0.0296 (2.96%)

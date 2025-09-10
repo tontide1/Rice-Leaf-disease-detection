@@ -1,10 +1,10 @@
 data/
+models/
 *.zip
 *.tar.gz
 Identifier
 desktop.ini
 Thumbs.db
-models/
 data.zip
 model_resnet_finetune.py
 model_hybrid_custom.py

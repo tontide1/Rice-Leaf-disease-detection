@@ -1,0 +1,35 @@
+Dataset: AUG Dataset
+Reference: AUG
+Total images: 1200
+Original classes: bacterial_leaf_blight, blast, brown_spot, normal
+Standardized classes: Bacterial Leaf Blight, Blast, Brown Spot, Healthy
+Number of classes: 4
+Accuracy: 93.00%
+FPS: 19.33
+Total inference time: 62.08 seconds
+
+Classification Report:
+Bacterial Leaf Blight:
+  Precision: 0.9867
+  Recall: 0.9867
+  F1-score: 0.9867
+  Support: 300.0
+
+Blast:
+  Precision: 0.8685
+  Recall: 0.9467
+  F1-score: 0.9059
+  Support: 300.0
+
+Brown Spot:
+  Precision: 0.9003
+  Recall: 0.9333
+  F1-score: 0.9165
+  Support: 300.0
+
+Healthy:
+  Precision: 0.9771
+  Recall: 0.8533
+  F1-score: 0.9110
+  Support: 300.0
+

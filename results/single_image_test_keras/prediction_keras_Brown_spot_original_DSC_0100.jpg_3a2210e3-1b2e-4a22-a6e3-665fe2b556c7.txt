@@ -1,0 +1,12 @@
+Model: Keras (.keras)
+Đường dẫn ảnh: data/splits/test/brown_spot/Brown_spot_original_DSC_0100.jpg_3a2210e3-1b2e-4a22-a6e3-665fe2b556c7.jpg
+Kết quả dự đoán: Brown Spot
+Lớp dự đoán: brown_spot
+Độ tin cậy: 0.9934 (99.34%)
+Thời gian inference: 2.8004 giây
+
+Xác suất cho tất cả các lớp:
+Bacterial Leaf Blight: 0.0016 (0.16%)
+Blast: 0.0030 (0.30%)
+Brown Spot: 0.9934 (99.34%)
+Healthy: 0.0020 (0.20%)

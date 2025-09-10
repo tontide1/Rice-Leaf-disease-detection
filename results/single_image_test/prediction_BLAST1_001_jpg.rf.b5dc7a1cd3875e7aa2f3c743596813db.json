@@ -1,0 +1,13 @@
+{
+  "image_path": "data/test_data_deeplearning/roboflow/Blast/BLAST1_001_jpg.rf.b5dc7a1cd3875e7aa2f3c743596813db.jpg",
+  "predicted_class": "brown_spot",
+  "predicted_display_name": "Brown Spot",
+  "confidence": 0.9174340963363647,
+  "inference_time": 0.5209472179412842,
+  "probabilities": {
+    "Bacterial Leaf Blight": 0.04795149341225624,
+    "Blast": 0.01296183466911316,
+    "Brown Spot": 0.9174340963363647,
+    "Healthy": 0.021652569994330406
+  }
+}

@@ -1,0 +1,29 @@
+Dataset: Melody Dataset
+Reference: Melody
+Total images: 900
+Original classes: bacterial_leaf_blight, blast, brown_spot
+Standardized classes: Bacterial Leaf Blight, Blast, Brown Spot
+Number of classes: 3
+Accuracy: 74.11%
+FPS: 174.11
+Total inference time: 5.17 seconds
+
+Classification Report:
+Bacterial Leaf Blight:
+  Precision: 0.6551
+  Recall: 0.9433
+  F1-score: 0.7732
+  Support: 300.0
+
+Blast:
+  Precision: 1.0000
+  Recall: 0.2933
+  F1-score: 0.4536
+  Support: 300.0
+
+Brown Spot:
+  Precision: 0.7851
+  Recall: 0.9867
+  F1-score: 0.8744
+  Support: 300.0
+

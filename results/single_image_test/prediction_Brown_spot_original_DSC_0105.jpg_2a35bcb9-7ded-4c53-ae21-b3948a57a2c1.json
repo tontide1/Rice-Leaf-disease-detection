@@ -1,0 +1,13 @@
+{
+  "image_path": "data/test_data_deeplearning/DoMinhHuy/brown_spot/Brown_spot_original_DSC_0105.jpg_2a35bcb9-7ded-4c53-ae21-b3948a57a2c1.jpg",
+  "predicted_class": "brown_spot",
+  "predicted_display_name": "Brown Spot",
+  "confidence": 1.0,
+  "inference_time": 0.3112304210662842,
+  "probabilities": {
+    "Bacterial Leaf Blight": 3.2240991715415634e-24,
+    "Blast": 5.343939508079242e-25,
+    "Brown Spot": 1.0,
+    "Healthy": 2.8817777026566815e-29
+  }
+}

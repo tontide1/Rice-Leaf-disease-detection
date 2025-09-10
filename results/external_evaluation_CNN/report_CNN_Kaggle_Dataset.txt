@@ -1,0 +1,29 @@
+Dataset: Kaggle Dataset
+Reference: Kaggle
+Total images: 900
+Original classes: blast, brown_spot, normal
+Standardized classes: Blast, Brown Spot, Healthy
+Number of classes: 3
+Accuracy: 3.78%
+FPS: 84.81
+Total inference time: 10.61 seconds
+
+Classification Report:
+Blast:
+  Precision: 0.3333
+  Recall: 0.0033
+  F1-score: 0.0066
+  Support: 300.0
+
+Brown Spot:
+  Precision: 0.0898
+  Recall: 0.0967
+  F1-score: 0.0931
+  Support: 300.0
+
+Healthy:
+  Precision: 0.0152
+  Recall: 0.0133
+  F1-score: 0.0142
+  Support: 300.0
+

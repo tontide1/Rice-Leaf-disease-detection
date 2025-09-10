@@ -1,0 +1,13 @@
+{
+  "image_path": "data/splits/train/brown_spot/Brown_spot_original_DSC_0100.jpg_0cee8085-0a84-44bf-9df6-6b98d5dfeb89.jpg",
+  "predicted_class": "brown_spot",
+  "predicted_display_name": "Brown Spot",
+  "confidence": 0.928803026676178,
+  "inference_time": 0.3125643730163574,
+  "probabilities": {
+    "Bacterial Leaf Blight": 0.025037437677383423,
+    "Blast": 0.025294670835137367,
+    "Brown Spot": 0.928803026676178,
+    "Healthy": 0.020864838734269142
+  }
+}

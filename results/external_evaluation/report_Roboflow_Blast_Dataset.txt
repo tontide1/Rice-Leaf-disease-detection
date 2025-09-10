@@ -1,0 +1,17 @@
+Dataset: Roboflow Blast Dataset
+Reference: Roboflow
+Total images: 300
+Original classes: blast
+Standardized classes: Blast
+Number of classes: 1
+Accuracy: 100.00%
+FPS: 369.59
+Total inference time: 0.81 seconds
+
+Classification Report:
+Blast:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1-score: 1.0000
+  Support: 300.0
+

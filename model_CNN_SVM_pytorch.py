@@ -75,8 +75,6 @@ def set_seed(seed):
     torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
-    # Note: For fixed input sizes, we can use benchmark for speed
-    # torch.backends.cudnn.benchmark = True  # Commented for reproducibility
 
 set_seed(cfg.SEED)
 
