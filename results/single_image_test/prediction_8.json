@@ -1,0 +1,13 @@
+{
+  "image_path": "data/test_data_deeplearning/realistic/Brown_Spot/8.png",
+  "predicted_class": "normal",
+  "predicted_display_name": "Healthy",
+  "confidence": 0.8663482069969177,
+  "inference_time": 0.28571486473083496,
+  "probabilities": {
+    "Bacterial Leaf Blight": 0.045256007462739944,
+    "Blast": 0.02523205615580082,
+    "Brown Spot": 0.06316374242305756,
+    "Healthy": 0.8663482069969177
+  }
+}

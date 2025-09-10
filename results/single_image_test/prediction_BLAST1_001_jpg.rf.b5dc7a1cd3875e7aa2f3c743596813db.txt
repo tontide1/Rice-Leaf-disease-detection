@@ -1,0 +1,11 @@
+Đường dẫn ảnh: data/test_data_deeplearning/roboflow/Blast/BLAST1_001_jpg.rf.b5dc7a1cd3875e7aa2f3c743596813db.jpg
+Kết quả dự đoán: Brown Spot
+Lớp dự đoán: brown_spot
+Độ tin cậy: 0.9174 (91.74%)
+Thời gian inference: 0.5209 giây
+
+Xác suất cho tất cả các lớp:
+Bacterial Leaf Blight: 0.0480 (4.80%)
+Blast: 0.0130 (1.30%)
+Brown Spot: 0.9174 (91.74%)
+Healthy: 0.0217 (2.17%)

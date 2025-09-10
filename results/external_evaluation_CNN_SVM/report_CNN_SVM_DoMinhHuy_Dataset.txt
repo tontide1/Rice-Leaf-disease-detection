@@ -1,0 +1,35 @@
+Dataset: DoMinhHuy Dataset
+Reference: DoMinhHuy
+Total images: 1015
+Original classes: bacterial_leaf_blight, blast, brown_spot, normal
+Standardized classes: Bacterial Leaf Blight, Blast, Brown Spot, Healthy
+Number of classes: 4
+Accuracy: 29.56%
+FPS: 184.94
+Total inference time: 5.49 seconds
+
+Classification Report:
+Bacterial Leaf Blight:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1-score: 0.0000
+  Support: 115.0
+
+Blast:
+  Precision: 0.2956
+  Recall: 1.0000
+  F1-score: 0.4563
+  Support: 300.0
+
+Brown Spot:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1-score: 0.0000
+  Support: 300.0
+
+Healthy:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1-score: 0.0000
+  Support: 300.0
+

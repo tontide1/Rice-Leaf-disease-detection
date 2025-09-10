@@ -1,0 +1,13 @@
+{
+  "image_path": "data/test_data_deeplearning/DoMinhHuy/blast/leaf_blast5.jpg",
+  "predicted_class": "blast",
+  "predicted_display_name": "Blast",
+  "confidence": 0.787801206111908,
+  "inference_time": 0.2985386848449707,
+  "probabilities": {
+    "Bacterial Leaf Blight": 0.019270194694399834,
+    "Blast": 0.787801206111908,
+    "Brown Spot": 0.16329719126224518,
+    "Healthy": 0.029631370678544044
+  }
+}

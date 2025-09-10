@@ -1,0 +1,11 @@
+Đường dẫn ảnh: data/test_data_deeplearning/realistic/Brown_Spot/8.png
+Kết quả dự đoán: Healthy
+Lớp dự đoán: normal
+Độ tin cậy: 0.8663 (86.63%)
+Thời gian inference: 0.2857 giây
+
+Xác suất cho tất cả các lớp:
+Bacterial Leaf Blight: 0.0453 (4.53%)
+Blast: 0.0252 (2.52%)
+Brown Spot: 0.0632 (6.32%)
+Healthy: 0.8663 (86.63%)

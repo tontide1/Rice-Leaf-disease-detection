@@ -1,0 +1,7 @@
+Article reference,Dataset reference,No of diseases,Names of diseases,Accuracy(%),FPS
+AUG,AUG Dataset,4,"Bacterial Leaf Blight, Blast, Brown Spot, Healthy",99.5,321.35
+DoMinhHuy,DoMinhHuy Dataset,4,"Bacterial Leaf Blight, Blast, Brown Spot, Healthy",99.92,392.935
+Kaggle,Kaggle Dataset,3,"Blast, Brown Spot, Healthy",33.33,365.1
+Melody,Melody Dataset,4,"Bacterial Leaf Blight, Blast, Brown Spot",92.83,370.35
+Realistic,Realistic Dataset,4,"Brown Spot, Healthy, Blast, Bacterial Leaf Blight",47.8,391.72
+Roboflow,Roboflow Blast Dataset,1,Blast,100,371.02

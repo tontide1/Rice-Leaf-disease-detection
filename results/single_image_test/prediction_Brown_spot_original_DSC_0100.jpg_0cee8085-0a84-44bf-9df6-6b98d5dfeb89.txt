@@ -1,0 +1,11 @@
+Đường dẫn ảnh: data/splits/train/brown_spot/Brown_spot_original_DSC_0100.jpg_0cee8085-0a84-44bf-9df6-6b98d5dfeb89.jpg
+Kết quả dự đoán: Brown Spot
+Lớp dự đoán: brown_spot
+Độ tin cậy: 0.9288 (92.88%)
+Thời gian inference: 0.3126 giây
+
+Xác suất cho tất cả các lớp:
+Bacterial Leaf Blight: 0.0250 (2.50%)
+Blast: 0.0253 (2.53%)
+Brown Spot: 0.9288 (92.88%)
+Healthy: 0.0209 (2.09%)

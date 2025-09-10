@@ -1,0 +1,15 @@
+{
+  "model_type": "Keras",
+  "model_path": "models/augmented_training_final_20250908_114654_FINAL.keras",
+  "image_path": "data/test_data_deeplearning/DoMinhHuy/blast/leaf_blast5.jpg",
+  "predicted_class": "blast",
+  "predicted_display_name": "Blast",
+  "confidence": 0.560184895992279,
+  "inference_time": 2.7796356678009033,
+  "probabilities": {
+    "Bacterial Leaf Blight": 0.4374883770942688,
+    "Blast": 0.560184895992279,
+    "Brown Spot": 9.770273027243093e-05,
+    "Healthy": 0.002229047939181328
+  }
+}

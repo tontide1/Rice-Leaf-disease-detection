@@ -1,0 +1,15 @@
+{
+  "model_type": "Keras",
+  "model_path": "models/augmented_training_final_20250908_114654_FINAL.keras",
+  "image_path": "data/splits/test/brown_spot/Brown_spot_original_DSC_0100.jpg_3a2210e3-1b2e-4a22-a6e3-665fe2b556c7.jpg",
+  "predicted_class": "brown_spot",
+  "predicted_display_name": "Brown Spot",
+  "confidence": 0.9933640956878662,
+  "inference_time": 2.800413131713867,
+  "probabilities": {
+    "Bacterial Leaf Blight": 0.00157672050409019,
+    "Blast": 0.0030240972992032766,
+    "Brown Spot": 0.9933640956878662,
+    "Healthy": 0.002035073935985565
+  }
+}

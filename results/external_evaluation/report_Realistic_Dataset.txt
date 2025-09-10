@@ -1,0 +1,35 @@
+Dataset: Realistic Dataset
+Reference: Realistic
+Total images: 32
+Original classes: Brown_Spot, Healthy, Leaf_Blast, Leaf_Blight
+Standardized classes: Brown Spot, Healthy, Blast, Bacterial Leaf Blight
+Number of classes: 4
+Accuracy: 31.25%
+FPS: 371.42
+Total inference time: 0.09 seconds
+
+Classification Report:
+Brown Spot:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1-score: 0.0000
+  Support: 10.0
+
+Healthy:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1-score: 0.0000
+  Support: 2.0
+
+Blast:
+  Precision: 0.5000
+  Recall: 0.1000
+  F1-score: 0.1667
+  Support: 10.0
+
+Bacterial Leaf Blight:
+  Precision: 0.3750
+  Recall: 0.9000
+  F1-score: 0.5294
+  Support: 10.0
+

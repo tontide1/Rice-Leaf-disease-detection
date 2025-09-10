@@ -1,0 +1,12 @@
+Model: Keras (.keras)
+Đường dẫn ảnh: data/test_data_deeplearning/DoMinhHuy/blast/leaf_blast5.jpg
+Kết quả dự đoán: Blast
+Lớp dự đoán: blast
+Độ tin cậy: 0.5602 (56.02%)
+Thời gian inference: 2.7796 giây
+
+Xác suất cho tất cả các lớp:
+Bacterial Leaf Blight: 0.4375 (43.75%)
+Blast: 0.5602 (56.02%)
+Brown Spot: 0.0001 (0.01%)
+Healthy: 0.0022 (0.22%)
